@@ -1,0 +1,31 @@
+<form id="applicationForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <label>Job Position:
+    <select id="job" name="job">
+      <option value="">Select</option>
+      <option value="developer">Developer</option>
+      <option value="designer">Designer</option>
+    </select>
+  </label>
+
+  <div id="devFields" style="display:none;">
+    <label>Favorite programming language: <input type="text" name="devLang"></label>
+  </div>
+
+  <div id="designFields" style="display:none;">
+    <label>Favorite design tool: <input type="text" name="designTool"></label>
+  </div>
+
+  <label>Email: <input type="email" name="email" required></label>
+  <button type="submit">Apply</button>
+</form>
+
+<script>
+const job = document.getElementById('job');
+const devFields = document.getElementById('devFields');
+const designFields = document.getElementById('designFields');
+
+job.addEventListener('change', () => {
+  devFields.style.display = job.value === 'developer' ? 'block' : 'none';
+  designFields.style.display = job.value === 'designer' ? 'block' : 'none';
+});
+</script>
