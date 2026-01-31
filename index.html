@@ -1,83 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Job Application Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Form</title>
+    <!-- Google Fonts like JotForm uses -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Anton&display=swap" rel="stylesheet">
 
-  <!-- JotForm Stylesheets -->
-  <link rel="stylesheet" href="https://cdn.jotfor.ms/stylebuilder/static/form-common.css?v=60a7156" />
-  <link id="custom-font" rel="stylesheet" href="//cdn.jotfor.ms/fonts/?family=Roboto|Anton" />
-  <link rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.68463"/>
-  <link rel="stylesheet" href="https://cdn.jotfor.ms/s/static/4215c66f0f3/css/styles/payment/payment_styles.css?3.3.68463" />
-  <link rel="stylesheet" href="https://cdn.jotfor.ms/s/static/4215c66f0f3/css/styles/payment/payment_feature.css?3.3.68463" />
+    <style>
+        /* Basic page styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
 
-  <!-- Custom Styles -->
-  <style>
-    /* Your form designer style (from your <style id="form-designer-style"> block) */
-    /* Paste all of your custom CSS here */
-    body {
-      margin: 0;
-      background: #f7f7f7;
-      font-family: 'Roboto', sans-serif;
-    }
-    .form-all {
-      max-width: 700px;
-      margin: 40px auto;
-      padding: 0 !important;
-      background: transparent !important;
-    }
-  </style>
+        .form-container {
+            background-color: #fff;
+            margin: 50px 20px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h2 {
+            font-family: 'Anton', sans-serif;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Optional: small note text like JotForm */
+        .form-note {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
+    <div class="form-container">
+        <h2>Sign Up Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter your full name">
+            </div>
 
-  <!-- JotForm Form -->
-  <form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" 
-        action="https://submit.jotform.com/submit/260283197824059" method="post" enctype="multipart/form-data" 
-        name="form_260283197824059" id="260283197824059" accept-charset="utf-8" autocomplete="on">
-    <input type="hidden" name="formID" value="260283197824059" />
-    <!-- All other hidden inputs from your form -->
-    
-    <div role="main" class="form-all">
-      <ul class="form-section page-section" role="presentation">
-        <!-- Paste your form fields (Full Name, Email, Phone, Resume Upload, Cover Letter, etc.) here -->
-      </ul>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Write something..."></textarea>
+                <div class="form-note">Optional: Share any additional details here.</div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
     </div>
-  </form>
-
-  <!-- JotForm Scripts -->
-  <script>window.enableEventObserver=true</script>
-  <script>window.CDN="https://cdn.jotfor.ms/";</script>
-  <script>window.umdRootPath="https://cdn.jotfor.ms/s/umd/2519b180cdf/";</script>
-  <script>window.staticRootPath="https://cdn.jotfor.ms/s/static/4215c66f0f3/";</script>
-
-  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/static/prototype.forms.js" type="text/javascript"></script>
-  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/static/jotform.forms.js" type="text/javascript"></script>
-  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/punycode-1.4.1.min.js" defer></script>
-  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/vendor/imageinfo.js"></script>
-  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/file-uploader/fileuploader.js"></script>
-  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/vendor/maskedinput_5.0.9.min.js"></script>
-  <script src="https://cdn.jotfor.ms/s/umd/2519b180cdf/for-form-branding-footer.js" defer></script>
-  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/vendor/smoothscroll.min.js"></script>
-  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/errorNavigation.js"></script>
-
-  <script>
-    JotForm.isFullSource = true;
-
-    window.addEventListener('DOMContentLoaded',function(){
-      window.brandingFooter.init({
-        formID:260283197824059,
-        campaign:"powered_by_jotform_le",
-        isCardForm:false,
-        isLegacyForm:true,
-        formLanguage:"en"
-      });
-    });
-
-    JotForm.init(function(){
-      /* Initialize any custom form behavior if needed */
-    });
-  </script>
-
 </body>
 </html>
