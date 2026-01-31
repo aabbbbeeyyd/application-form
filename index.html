@@ -1,136 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Form</title>
-    <!-- Google Fonts like JotForm uses -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Anton&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Application Form</title>
+<style>
+  /* Reset */
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Helvetica Neue', sans-serif; }
+  body { background: #f4f4f4; display: flex; justify-content: center; padding: 50px; }
 
-    <style>
-        /* Basic page styling */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-        }
+  /* Form container */
+  .form-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
 
-        .form-container {
-            background-color: #fff;
-            margin: 50px 20px;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 100%;
-        }
+  h2 {
+    font-family: 'Arial Black', sans-serif;
+    color: #2e69ff;
+    margin-bottom: 30px;
+    text-align: center;
+  }
 
-        h2 {
-            font-family: 'Anton', sans-serif;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
+  /* Form elements */
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+  }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+  input[type="text"],
+  input[type="email"],
+  input[type="file"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #2e69ff;
+    box-shadow: 0 0 5px rgba(46,105,255,0.3);
+    outline: none;
+  }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
+  textarea { resize: vertical; min-height: 150px; }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: #007bff;
-            outline: none;
-        }
+  /* Checkbox */
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .checkbox-container input { margin-right: 10px; }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
+  /* File upload */
+  .file-upload {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    transition: border-color 0.3s, background 0.3s;
+    color: #555;
+  }
+  .file-upload:hover { border-color: #2e69ff; background: #f9faff; }
 
-        .submit-btn {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
+  /* Submit button */
+  button {
+    background-color: #FF7121;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+  }
+  button:hover { background-color: #e9651f; }
 
-        .submit-btn:hover {
-            background-color: #0056b3;
-        }
+  /* Conditional fields */
+  .hidden { display: none; }
 
-        /* Optional: small note text like JotForm */
-        .form-note {
-            font-size: 12px;
-            color: #777;
-            margin-top: 5px;
-        }
-    </style>
+  /* Small note under file */
+  .file-name { font-size: 13px; color: #555; margin-top: 5px; }
+</style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>Sign Up Form</h2>
-        <form>
-            <div class="form-group">
-                <label for="fullname">Full Name</label>
-                <input type="text" id="fullname" placeholder="Enter your full name">
-            </div>
 
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Enter your email">
-            </div>
+<div class="form-container">
+  <h2>Job Application Form</h2>
+  <form id="jobForm">
 
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" placeholder="Enter your phone number">
-            </div>
+    <label for="fullName">Full Name *</label>
+    <input type="text" id="fullName" name="fullName" required>
 
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <select id="gender">
-                    <option value="" disabled selected>Select your gender</option>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" placeholder="example@example.com" required>
 
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" placeholder="Write something..."></textarea>
-                <div class="form-note">Optional: Share any additional details here.</div>
-            </div>
+    <label for="phone">Phone *</label>
+    <input type="text" id="phone" name="phone" required>
 
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
+    <!-- Resume Upload -->
+    <label>Upload Resume *</label>
+    <div class="file-upload" id="resumeUpload">
+      Click or drag file to upload
+      <input type="file" id="resume" name="resume" required style="display:none;">
+      <div class="file-name" id="resumeFileName"></div>
     </div>
+
+    <!-- Cover Letter -->
+    <label for="coverLetterOption">Cover Letter *</label>
+    <select id="coverLetterOption" name="coverLetterOption" required>
+      <option value="">Please Select</option>
+      <option value="type">Type</option>
+      <option value="upload">Upload</option>
+    </select>
+
+    <div id="coverLetterTypeDiv" class="hidden">
+      <label for="coverLetterText">Type Cover Letter *</label>
+      <textarea id="coverLetterText" name="coverLetterText"></textarea>
+    </div>
+
+    <div id="coverLetterUploadDiv" class="hidden">
+      <label>Upload Cover Letter *</label>
+      <div class="file-upload" id="coverLetterUpload">
+        Click or drag file to upload
+        <input type="file" id="coverLetterFile" name="coverLetterFile">
+        <div class="file-name" id="coverLetterFileName"></div>
+      </div>
+    </div>
+
+    <div class="checkbox-container">
+      <input type="checkbox" id="consent" name="consent" required>
+      <label for="consent">I give my consent *</label>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  // File upload handlers
+  function setupFileUpload(divId, inputId, fileNameId) {
+    const div = document.getElementById(divId);
+    const input = document.getElementById(inputId);
+    const nameDiv = document.getElementById(fileNameId);
+
+    div.addEventListener('click', () => input.click());
+    input.addEventListener('change', () => {
+      if(input.files.length) {
+        nameDiv.textContent = input.files[0].name;
+      } else {
+        nameDiv.textContent = '';
+      }
+    });
+    div.addEventListener('dragover', e => e.preventDefault());
+    div.addEventListener('drop', e => {
+      e.preventDefault();
+      input.files = e.dataTransfer.files;
+      if(input.files.length) nameDiv.textContent = input.files[0].name;
+    });
+  }
+
+  setupFileUpload('resumeUpload', 'resume', 'resumeFileName');
+  setupFileUpload('coverLetterUpload', 'coverLetterFile', 'coverLetterFileName');
+
+  // Cover letter conditional logic
+  const coverLetterOption = document.getElementById('coverLetterOption');
+  const typeDiv = document.getElementById('coverLetterTypeDiv');
+  const uploadDiv = document.getElementById('coverLetterUploadDiv');
+  const coverLetterText = document.getElementById('coverLetterText');
+  const coverLetterFile = document.getElementById('coverLetterFile');
+
+  coverLetterOption.addEventListener('change', () => {
+    const value = coverLetterOption.value;
+    if (value === 'type') {
+      typeDiv.classList.remove('hidden');
+      uploadDiv.classList.add('hidden');
+      coverLetterText.setAttribute('required', '');
+      coverLetterFile.removeAttribute('required');
+    } else if (value === 'upload') {
+      uploadDiv.classList.remove('hidden');
+      typeDiv.classList.add('hidden');
+      coverLetterFile.setAttribute('required', '');
+      coverLetterText.removeAttribute('required');
+    } else {
+      typeDiv.classList.add('hidden');
+      uploadDiv.classList.add('hidden');
+      coverLetterText.removeAttribute('required');
+      coverLetterFile.removeAttribute('required');
+    }
+  });
+
+  // Form validation
+  document.getElementById('jobForm').addEventListener('submit', function(e){
+    if(!this.checkValidity()) {
+      e.preventDefault();
+      alert('Please fill all required fields correctly.');
+    } else {
+      e.preventDefault(); // Remove this if submitting to server
+      alert('Form submitted successfully!');
+    }
+  });
+</script>
 </body>
 </html>
