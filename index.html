@@ -1,25 +1,164 @@
-<form id="applicationForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-  <label>Job Position:
-    <select id="job" name="job">
-      <option value="">Select</option>
-      <option value="developer">Developer</option>
-      <option value="designer">Designer</option>
-    </select>
-  </label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Form</title>
+<style>
+/* ============================= */
+/* CUSTOM CSS — from your test form */
+/* ============================= */
+
+/* TYPOGRAPHY — match Wix */
+.form-all,
+.form-label,
+.form-input,
+.form-textbox,
+.form-textarea,
+.form-dropdown {
+    font-family : 'Avenir Light', 'Avenir', 'Montserrat', sans-serif;
+    font-size : 14px;
+}
+
+/* Labels bold */
+.form-label {
+    font-weight : 700;
+    margin-bottom : 4px;
+    color : #FFFFFF;
+}
+
+/* BUTTON STYLING — match Wix */
+.form-submit-button {
+    background-color : #FF7121;
+    border-color : #FF7121;
+    color : #fff;
+    font-family : 'Avenir Light', 'Avenir', 'Montserrat', sans-serif;
+    font-size : 14px;
+    font-weight : 600;
+    padding : 12px 24px;
+    border-radius : 4px;
+    cursor: pointer;
+}
+
+.form-submit-button:hover {
+    background-color : #e9651f;
+    border-color : #e9651f;
+}
+
+/* REDUCE DEFAULT SPACING */
+.form-line {
+    padding-top : 6px;
+    padding-bottom : 6px;
+    margin-bottom : 6px;
+}
+
+.form-input-wide {
+    margin-bottom : 4px;
+}
+
+/* Input text */
+.form-textbox,
+.form-textarea,
+.form-dropdown {
+    color : #000000;
+    font-weight : 300;
+    line-height : 1.4;
+}
+
+/* Paragraph / text element */
+.form-html {
+    font-family : 'Avenir Light', 'Avenir', 'Montserrat', sans-serif;
+    font-size : 14px;
+    font-weight : 700;
+    line-height : 1.5;
+    color : #000000;
+    width : 100%;
+    max-width : 100%;
+    margin-bottom : 0;
+}
+
+/* Make textarea same visual weight as other fields */
+.form-textarea {
+    min-height : 160px;
+    font-size : 14px;
+    line-height : 1.5;
+    padding : 10px;
+    resize : vertical;
+}
+
+/* Remove outer container border and padding */
+.form-all {
+    border : none !important;
+    box-shadow : none !important;
+    padding : 0 !important;
+    margin : 0 auto;
+    background: transparent !important;
+}
+
+/* ============================= */
+/* CUSTOM FORM STRUCTURE */
+/* ============================= */
+
+body {
+    font-family: 'Avenir Light', 'Avenir', 'Montserrat', sans-serif;
+    background: transparent;
+    color: #000000;
+    margin: 40px;
+}
+
+form.form-all {
+    max-width: 500px;
+    margin: auto;
+}
+
+label.form-label {
+    display: block;
+    margin-top: 15px;
+}
+
+input.form-input, select.form-dropdown, textarea.form-textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+</style>
+</head>
+<body>
+
+<h2 class="form-html">Application Form</h2>
+<form class="form-all" id="applicationForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+  <label class="form-label" for="job">Job Position:</label>
+  <select class="form-dropdown" id="job" name="job" required>
+    <option value="">Select</option>
+    <option value="developer">Developer</option>
+    <option value="designer">Designer</option>
+  </select>
 
   <div id="devFields" style="display:none;">
-    <label>Favorite programming language: <input type="text" name="devLang"></label>
+    <label class="form-label" for="devLang">Favorite programming language:</label>
+    <input class="form-textbox" type="text" name="devLang" id="devLang">
   </div>
 
   <div id="designFields" style="display:none;">
-    <label>Favorite design tool: <input type="text" name="designTool"></label>
+    <label class="form-label" for="designTool">Favorite design tool:</label>
+    <input class="form-textbox" type="text" name="designTool" id="designTool">
   </div>
 
-  <label>Email: <input type="email" name="email" required></label>
-  <button type="submit">Apply</button>
+  <label class="form-label" for="email">Email:</label>
+  <input class="form-textbox" type="email" name="email" id="email" required>
+
+  <button type="submit" class="form-submit-button">Apply</button>
 </form>
 
 <script>
+// =============================
+// CONDITIONAL FIELDS
+// =============================
 const job = document.getElementById('job');
 const devFields = document.getElementById('devFields');
 const designFields = document.getElementById('designFields');
@@ -28,4 +167,17 @@ job.addEventListener('change', () => {
   devFields.style.display = job.value === 'developer' ? 'block' : 'none';
   designFields.style.display = job.value === 'designer' ? 'block' : 'none';
 });
+
+// =============================
+// AUTO-SELECT JOB FROM URL PARAM
+// =============================
+const urlParams = new URLSearchParams(window.location.search);
+const jobParam = urlParams.get('job');
+if(jobParam){
+  job.value = jobParam;
+  job.dispatchEvent(new Event('change'));
+}
 </script>
+
+</body>
+</html>
