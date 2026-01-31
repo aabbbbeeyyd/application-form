@@ -1,183 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Application Form</title>
-<style>
-/* ============================= */
-/* CUSTOM CSS — from your test form */
-/* ============================= */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Application Form</title>
 
-/* TYPOGRAPHY — match Wix */
-.form-all,
-.form-label,
-.form-input,
-.form-textbox,
-.form-textarea,
-.form-dropdown {
-    font-family : 'Avenir Light', 'Avenir', 'Montserrat', sans-serif;
-    font-size : 14px;
-}
+  <!-- JotForm Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jotfor.ms/stylebuilder/static/form-common.css?v=60a7156" />
+  <link id="custom-font" rel="stylesheet" href="//cdn.jotfor.ms/fonts/?family=Roboto|Anton" />
+  <link rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.68463"/>
+  <link rel="stylesheet" href="https://cdn.jotfor.ms/s/static/4215c66f0f3/css/styles/payment/payment_styles.css?3.3.68463" />
+  <link rel="stylesheet" href="https://cdn.jotfor.ms/s/static/4215c66f0f3/css/styles/payment/payment_feature.css?3.3.68463" />
 
-/* Labels bold */
-.form-label {
-    font-weight : 700;
-    margin-bottom : 4px;
-    color : #FFFFFF;
-}
-
-/* BUTTON STYLING — match Wix */
-.form-submit-button {
-    background-color : #FF7121;
-    border-color : #FF7121;
-    color : #fff;
-    font-family : 'Avenir Light', 'Avenir', 'Montserrat', sans-serif;
-    font-size : 14px;
-    font-weight : 600;
-    padding : 12px 24px;
-    border-radius : 4px;
-    cursor: pointer;
-}
-
-.form-submit-button:hover {
-    background-color : #e9651f;
-    border-color : #e9651f;
-}
-
-/* REDUCE DEFAULT SPACING */
-.form-line {
-    padding-top : 6px;
-    padding-bottom : 6px;
-    margin-bottom : 6px;
-}
-
-.form-input-wide {
-    margin-bottom : 4px;
-}
-
-/* Input text */
-.form-textbox,
-.form-textarea,
-.form-dropdown {
-    color : #000000;
-    font-weight : 300;
-    line-height : 1.4;
-}
-
-/* Paragraph / text element */
-.form-html {
-    font-family : 'Avenir Light', 'Avenir', 'Montserrat', sans-serif;
-    font-size : 14px;
-    font-weight : 700;
-    line-height : 1.5;
-    color : #000000;
-    width : 100%;
-    max-width : 100%;
-    margin-bottom : 0;
-}
-
-/* Make textarea same visual weight as other fields */
-.form-textarea {
-    min-height : 160px;
-    font-size : 14px;
-    line-height : 1.5;
-    padding : 10px;
-    resize : vertical;
-}
-
-/* Remove outer container border and padding */
-.form-all {
-    border : none !important;
-    box-shadow : none !important;
-    padding : 0 !important;
-    margin : 0 auto;
-    background: transparent !important;
-}
-
-/* ============================= */
-/* CUSTOM FORM STRUCTURE */
-/* ============================= */
-
-body {
-    font-family: 'Avenir Light', 'Avenir', 'Montserrat', sans-serif;
-    background: transparent;
-    color: #000000;
-    margin: 40px;
-}
-
-form.form-all {
-    max-width: 500px;
-    margin: auto;
-}
-
-label.form-label {
-    display: block;
-    margin-top: 15px;
-}
-
-input.form-input, select.form-dropdown, textarea.form-textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-</style>
+  <!-- Custom Styles -->
+  <style>
+    /* Your form designer style (from your <style id="form-designer-style"> block) */
+    /* Paste all of your custom CSS here */
+    body {
+      margin: 0;
+      background: #f7f7f7;
+      font-family: 'Roboto', sans-serif;
+    }
+    .form-all {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 !important;
+      background: transparent !important;
+    }
+  </style>
 </head>
 <body>
 
-<h2 class="form-html">Application Form</h2>
-<form class="form-all" id="applicationForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <!-- JotForm Form -->
+  <form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" 
+        action="https://submit.jotform.com/submit/260283197824059" method="post" enctype="multipart/form-data" 
+        name="form_260283197824059" id="260283197824059" accept-charset="utf-8" autocomplete="on">
+    <input type="hidden" name="formID" value="260283197824059" />
+    <!-- All other hidden inputs from your form -->
+    
+    <div role="main" class="form-all">
+      <ul class="form-section page-section" role="presentation">
+        <!-- Paste your form fields (Full Name, Email, Phone, Resume Upload, Cover Letter, etc.) here -->
+      </ul>
+    </div>
+  </form>
 
-  <label class="form-label" for="job">Job Position:</label>
-  <select class="form-dropdown" id="job" name="job" required>
-    <option value="">Select</option>
-    <option value="developer">Developer</option>
-    <option value="designer">Designer</option>
-  </select>
+  <!-- JotForm Scripts -->
+  <script>window.enableEventObserver=true</script>
+  <script>window.CDN="https://cdn.jotfor.ms/";</script>
+  <script>window.umdRootPath="https://cdn.jotfor.ms/s/umd/2519b180cdf/";</script>
+  <script>window.staticRootPath="https://cdn.jotfor.ms/s/static/4215c66f0f3/";</script>
 
-  <div id="devFields" style="display:none;">
-    <label class="form-label" for="devLang">Favorite programming language:</label>
-    <input class="form-textbox" type="text" name="devLang" id="devLang">
-  </div>
+  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/static/prototype.forms.js" type="text/javascript"></script>
+  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/static/jotform.forms.js" type="text/javascript"></script>
+  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/punycode-1.4.1.min.js" defer></script>
+  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/vendor/imageinfo.js"></script>
+  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/file-uploader/fileuploader.js"></script>
+  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/vendor/maskedinput_5.0.9.min.js"></script>
+  <script src="https://cdn.jotfor.ms/s/umd/2519b180cdf/for-form-branding-footer.js" defer></script>
+  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/vendor/smoothscroll.min.js"></script>
+  <script src="https://cdn.jotfor.ms/s/static/4215c66f0f3/js/errorNavigation.js"></script>
 
-  <div id="designFields" style="display:none;">
-    <label class="form-label" for="designTool">Favorite design tool:</label>
-    <input class="form-textbox" type="text" name="designTool" id="designTool">
-  </div>
+  <script>
+    JotForm.isFullSource = true;
 
-  <label class="form-label" for="email">Email:</label>
-  <input class="form-textbox" type="email" name="email" id="email" required>
+    window.addEventListener('DOMContentLoaded',function(){
+      window.brandingFooter.init({
+        formID:260283197824059,
+        campaign:"powered_by_jotform_le",
+        isCardForm:false,
+        isLegacyForm:true,
+        formLanguage:"en"
+      });
+    });
 
-  <button type="submit" class="form-submit-button">Apply</button>
-</form>
-
-<script>
-// =============================
-// CONDITIONAL FIELDS
-// =============================
-const job = document.getElementById('job');
-const devFields = document.getElementById('devFields');
-const designFields = document.getElementById('designFields');
-
-job.addEventListener('change', () => {
-  devFields.style.display = job.value === 'developer' ? 'block' : 'none';
-  designFields.style.display = job.value === 'designer' ? 'block' : 'none';
-});
-
-// =============================
-// AUTO-SELECT JOB FROM URL PARAM
-// =============================
-const urlParams = new URLSearchParams(window.location.search);
-const jobParam = urlParams.get('job');
-if(jobParam){
-  job.value = jobParam;
-  job.dispatchEvent(new Event('change'));
-}
-</script>
+    JotForm.init(function(){
+      /* Initialize any custom form behavior if needed */
+    });
+  </script>
 
 </body>
 </html>
